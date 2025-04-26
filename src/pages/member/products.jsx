@@ -53,17 +53,18 @@ const Products = () => {
         <div className="flex flex-col w-screen min-h-screen">
             {<Navbar/>}
             <div className="flex flex-col bg-[var(--color-mint-800)] w-screen min-h-screen p-4 md:p-16 sm:p-8">
+                <h1 className="text-5xl text-[var(--color-mint-200)] font-black text-center mb-2">Our Products</h1>
                 {!checkout && <div className="flex flex-wrap border-2 border-[var(--color-mint-200)] bg-[var(--color-mint-600)] p-4 md:p-8 sm:p-6 gap-7 items-center justify-center rounded-2xl">
                     {
                         products.map((product) => (
                             <div key={product.id} className="flex flex-col justify-between h-100 w-70 bg-[var(--color-mint-800)] rounded-lg p-4 gap-1">
-                                <h1 className="font-bold text-[var(--color-mint-200)] text-sm">{product.title}</h1>
                                 <div className="flex h-50 w-full">
                                     <img src={product.images[0]} className="object-cover rounded-lg w-full"></img>
                                 </div>
+                                <h1 className="font-bold text-[var(--color-mint-200)] text-sm">{product.title}</h1>
                                 <p className="font-semibold text-[var(--color-mint-200)]  text-sm">$ {product.price}</p>
                                 <p className="text-[var(--color-mint-400)] text-sm overflow-auto">{product.description}</p>
-                                <div className="flex justify-between bg-[var(--color-mint-600)] p-2 rounded-sm items-center">
+                                <div className="flex justify-between bg-[var(--color-mint-600)] p-1 rounded-sm items-center">
                                     <button onClick={() => {addToCart(product)}} className="flex justify-center items-center bg-green-300 w-5 h-5 rounded-sm hover:bg-green-400 transition-all cursor-pointer">+</button>
                                     <p className="text-[var(--color-mint-200)]">{product.quantity}</p>
                                     <button onClick={() => {removefromCart(product)}} className="flex justify-center items-center bg-red-300 w-5 h-5 rounded-sm hover:bg-red-400 transition-all cursor-pointer">-</button>
@@ -78,7 +79,8 @@ const Products = () => {
                     </div>
                 </div>}
 
-                {checkout && <div className="flex flex-wrap border-2 border-[var(--color-mint-200)] bg-[var(--color-mint-600)] p-4 md:p-8 sm:p-6 gap-7 items-center justify-center rounded-2xl">
+                {checkout && <div className="flex flex-col flex-wrap border-2 border-[var(--color-mint-200)] bg-[var(--color-mint-600)] p-4 md:p-8 sm:p-6 gap-7 items-center justify-center rounded-2xl">
+                    <h1 className="text-[var(--color-mint-200)] text-2xl font-bold">Checkout</h1>
                     {
                         products.map((product) => product.quantity > 0 && (
                             <div key={product.id} className="flex justify-between h-30 w-full bg-[var(--color-mint-800)] rounded-lg p-4 gap-1 items-center">
@@ -97,20 +99,20 @@ const Products = () => {
                             </div>
                         ))
                     }
-                    <form className="flex flex-col">
+                    <form className="flex flex-col w-full">
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Username</label>
                         <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="username"></input>
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Full Name</label>
-                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-8 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="full name"></input>
+                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="full name"></input>
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Phone Number</label>
-                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-8 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="phone number"></input>
+                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="phone number"></input>
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Email</label>
-                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-8 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="email"></input>
+                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="email"></input>
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Address</label>
-                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-8 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="address"></input>
+                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="address"></input>
                         <label className="font-semibold text-[var(--color-mint-200)] mb-1">Bank Account Number</label>
-                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-8 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="bank account number"></input>
-                        <label className="font-semibold text-[var(--color-mint-200)] mb-1">Total: ${countTotal()}</label>
+                        <input type="text" className="bg-[var(--color-mint-800)] text-[var(--color-mint-200)] p-2 mb-4 rounded-sm outline-2 outline-[var(--color-mint-800)] focus:outline-[var(--color-mint-400)] transition-all" placeholder="bank account number"></input>
+                        <label className="underline font-bold text-[var(--color-mint-200)] mb-1 text-xl">Total: ${countTotal()}</label>
                         <div className="flex justify-center">
                             <input type="button" value="Pay" className="bg-[var(--color-mint-200)] w-fit px-4 py-1 rounded-lg text-[var(--color-mint-800)] hover:bg-[var(--color-mint-400)] transition-all cursor-pointer" onClick={pay}/>
                         </div>
